@@ -54,10 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body
-        className={`${inter.variable} font-sans antialiased`}
-        style={{ background: "#0a0505", color: "#fff" }}
-      >
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
