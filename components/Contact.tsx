@@ -1,127 +1,101 @@
 "use client";
-import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Send, Mail, MapPin, Github, Linkedin, CheckCircle, Loader2 } from "lucide-react";
+import { useRef } from "react";
+import { Mail, MapPin, Github, Linkedin, Phone, ArrowUpRight } from "lucide-react";
 import { PERSON } from "@/data/portfolio";
 import SectionHeading from "./ui/SectionHeading";
+
+const ease = [0.22, 1, 0.36, 1];
 
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-    // Opens email client — works without a backend
-    window.location.href = `mailto:${PERSON.email}?subject=Portfolio Inquiry from ${form.name}&body=${encodeURIComponent(form.message + "\n\nFrom: " + form.email)}`;
-    setTimeout(() => setStatus("sent"), 500);
-  };
+  const items = [
+    { icon: Mail, label: "Primary Email", value: PERSON.email, href: `mailto:${PERSON.email}` },
+    { icon: Mail, label: "Alternate Email", value: PERSON.emailAlt, href: `mailto:${PERSON.emailAlt}` },
+    { icon: Phone, label: "Phone", value: PERSON.phone, href: `tel:${PERSON.phone}` },
+    { icon: MapPin, label: "Location", value: PERSON.location, href: null },
+  ];
 
   return (
-    <section id="contact" ref={ref} className="py-24">
-      <div className="container mx-auto px-6">
+    <section id="contact" ref={ref} className="py-28 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-[150px] opacity-18 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse, rgba(50,130,10,0.6), transparent 70%)" }} />
+
+      <div className="container mx-auto px-6 relative z-10">
         <SectionHeading title="Get In Touch" subtitle="Let's work together" />
 
-        <div className="mt-14 grid lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Open to new opportunities
-            </h3>
-            <p className="text-slate-400 leading-relaxed mb-8">
-              Whether you have a project in mind, a role you think I'd be great for, or just want to connect —
-              I'd love to hear from you. I typically respond within 24 hours.
-            </p>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.12, duration: 0.5 }}
+          className="text-white/45 text-base leading-relaxed mb-12 max-w-xl mt-4">
+          Open to senior roles, freelance projects, or just a conversation.
+          I respond within <span className="text-[#a3e635] font-semibold">24 hours</span>.
+        </motion.p>
 
-            <div className="space-y-4">
-              {[
-                { icon: Mail, label: "Email", value: PERSON.email, href: `mailto:${PERSON.email}` },
-                { icon: MapPin, label: "Location", value: PERSON.location, href: null },
-              ].map(({ icon: Icon, label, value, href }) => (
-                <div key={label} className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-violet-500/10 border border-violet-500/20 rounded-xl flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-violet-400" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          {items.map(({ icon: Icon, label, value, href }, i) => (
+            <motion.div key={label}
+              data-animate
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1 + i * 0.08, duration: 0.5, ease }}
+              whileHover={{ y: -5 }}
+              style={{ willChange: "transform, opacity" }}>
+              {href ? (
+                <a href={href} className="group frosted frosted-hover rounded-2xl p-5 flex flex-col gap-3 h-full block">
+                  <div className="w-10 h-10 frosted-green rounded-xl flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-[#a3e635]" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500">{label}</p>
-                    {href ? (
-                      <a href={href} className="text-slate-300 hover:text-violet-400 transition-colors text-sm">{value}</a>
-                    ) : (
-                      <p className="text-slate-300 text-sm">{value}</p>
-                    )}
+                    <p className="text-xs text-white/30 mb-0.5 uppercase tracking-wide font-medium">{label}</p>
+                    <p className="text-white/70 group-hover:text-[#a3e635] transition-colors text-sm font-semibold break-all">{value}</p>
+                  </div>
+                </a>
+              ) : (
+                <div className="frosted rounded-2xl p-5 flex flex-col gap-3 h-full">
+                  <div className="w-10 h-10 frosted-green rounded-xl flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-[#a3e635]" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/30 mb-0.5 uppercase tracking-wide font-medium">{label}</p>
+                    <p className="text-white/70 text-sm font-semibold">{value}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="flex gap-3 mt-8">
-              {[
-                { href: PERSON.social.github, icon: Github },
-                { href: PERSON.social.linkedin, icon: Linkedin },
-              ].filter(s => s.href).map(({ href, icon: Icon }) => (
-                <motion.a key={href} href={href} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-10 h-10 bg-slate-800 border border-slate-700 hover:border-violet-500/50 rounded-xl flex items-center justify-center text-slate-400 hover:text-violet-400 transition-all">
-                  <Icon className="w-4 h-4" />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {status === "sent" ? (
-              <div className="h-full flex items-center justify-center">
-                <div className="text-center">
-                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-slate-400">Your email client should have opened. I'll be in touch soon.</p>
-                  <button onClick={() => setStatus("idle")} className="mt-4 text-violet-400 hover:underline text-sm">Send another</button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm text-slate-300 mb-1.5">Your Name</label>
-                  <input type="text" required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                    placeholder="John Smith"
-                    className="w-full bg-slate-900/80 border border-slate-700 focus:border-violet-500 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all" />
-                </div>
-                <div>
-                  <label className="block text-sm text-slate-300 mb-1.5">Email Address</label>
-                  <input type="email" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    placeholder="john@company.com"
-                    className="w-full bg-slate-900/80 border border-slate-700 focus:border-violet-500 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all" />
-                </div>
-                <div>
-                  <label className="block text-sm text-slate-300 mb-1.5">Message</label>
-                  <textarea required rows={5} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    placeholder="Tell me about your project or opportunity..."
-                    className="w-full bg-slate-900/80 border border-slate-700 focus:border-violet-500 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all resize-none" />
-                </div>
-                <motion.button
-                  type="submit"
-                  disabled={status === "sending"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 disabled:opacity-70 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-violet-500/25"
-                >
-                  {status === "sending" ? <><Loader2 className="w-4 h-4 animate-spin" />Sending...</> : <><Send className="w-4 h-4" />Send Message</>}
-                </motion.button>
-              </form>
-            )}
-          </motion.div>
+              )}
+            </motion.div>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.45, duration: 0.5 }}
+          className="flex flex-wrap items-center gap-4">
+          {[
+            { href: PERSON.social.github, icon: Github, label: "GitHub", handle: "Tanvin01" },
+            { href: PERSON.social.linkedin, icon: Linkedin, label: "LinkedIn", handle: "tanvin-kheni" },
+          ].filter(s => s.href).map(({ href, icon: Icon, label, handle }) => (
+            <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
+              whileHover={{ y: -3 }}
+              className="group frosted frosted-hover rounded-2xl px-5 py-3 flex items-center gap-3">
+              <Icon className="w-4 h-4 text-white/40 group-hover:text-[#a3e635] transition-colors" />
+              <div>
+                <p className="text-xs text-white/25 font-medium">{label}</p>
+                <p className="text-white/65 group-hover:text-white text-sm font-bold transition-colors">{handle}</p>
+              </div>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#a3e635] transition-colors ml-1" />
+            </motion.a>
+          ))}
+
+          <motion.a href={`mailto:${PERSON.email}`}
+            whileHover={{ scale: 1.03, y: -2 }}
+            className="btn-primary flex items-center gap-2 px-6 py-3 rounded-full text-sm ml-auto">
+            <Mail className="w-4 h-4" /> Send Email <ArrowUpRight className="w-4 h-4" />
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

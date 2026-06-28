@@ -1,0 +1,11 @@
+To make the Resume button download your actual PDF:
+
+1. Copy your resume PDF file to this folder:
+   D:\projects\task-manager\projects\portfolio\public\
+
+2. Name it exactly:
+   Tanvin_Kheni_Resume.pdf
+
+3. The download will work automatically — no code changes needed.
+
+Until you add the PDF, clicking Resume will open your LinkedIn profile.

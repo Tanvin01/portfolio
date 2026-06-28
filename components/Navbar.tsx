@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
+  { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -17,67 +18,70 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    const h = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", h);
+    return () => window.removeEventListener("scroll", h);
   }, []);
 
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/60 shadow-xl shadow-black/20" : "bg-transparent"
-      }`}
+      transition={{ duration: 0.7, ease: [0.22,1,0.36,1] }}
+      className="fixed top-0 left-0 right-0 z-50 px-4 py-3"
     >
-      <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <motion.a href="#" className="text-xl font-bold gradient-text" whileHover={{ scale: 1.05 }}>
-          {PERSON.name.split(" ")[0]}<span className="text-white">.</span>
+      {/* Pill navbar — exactly like the screenshot */}
+      <div className={`mx-auto max-w-5xl frosted rounded-full px-6 h-12 flex items-center justify-between transition-all duration-300 ${scrolled ? "shadow-lg shadow-black/30" : ""}`}>
+        <motion.a href="#" whileHover={{ scale: 1.05 }}
+          className="text-lg font-black tracking-tight">
+          <span className="text-[#a3e635]">{PERSON.name.split(" ")[0]}</span>
+          <span className="text-white/50">.</span>
         </motion.a>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Desktop — centered links */}
+        <ul className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a href={href} className="text-sm text-slate-400 hover:text-white transition-colors relative group">
+              <a href={href} className="text-sm text-white/60 hover:text-white transition-colors font-medium relative group">
                 {label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-violet-400 to-blue-400 transition-all group-hover:w-full" />
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#a3e635] transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
-          <li>
-            <a href={PERSON.resume} download
-              className="flex items-center gap-1.5 text-sm bg-violet-600 hover:bg-violet-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
-              <Download className="w-3.5 h-3.5" /> Resume
-            </a>
-          </li>
         </ul>
 
-        {/* Mobile */}
-        <button className="md:hidden text-slate-400 hover:text-white" onClick={() => setOpen(!open)}>
+        {/* CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <a href={PERSON.resume} download="Tanvin_Kheni_Full_Stack.pdf"
+            className="frosted-green text-[#a3e635] text-sm font-semibold px-4 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-[rgba(163,230,53,0.18)] transition-all">
+            <Download className="w-3.5 h-3.5" /> CV
+          </a>
+        </div>
+
+        <button className="md:hidden text-white/60 hover:text-white" onClick={() => setOpen(!open)}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-      </nav>
+      </div>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800"
-          >
-            <ul className="container mx-auto px-6 py-4 flex flex-col gap-3">
+            initial={{ opacity:0, y:-10, scale:0.97 }}
+            animate={{ opacity:1, y:0, scale:1 }}
+            exit={{ opacity:0, y:-10, scale:0.97 }}
+            transition={{ duration:0.2 }}
+            className="mx-auto max-w-5xl mt-2 frosted rounded-2xl px-6 py-4">
+            <ul className="flex flex-col gap-2">
               {NAV_LINKS.map(({ href, label }) => (
                 <li key={href}>
                   <a href={href} onClick={() => setOpen(false)}
-                    className="block text-slate-300 hover:text-white py-2 transition-colors">{label}</a>
+                    className="block text-white/70 hover:text-white py-1.5 transition-colors font-medium">{label}</a>
                 </li>
               ))}
-              <li>
-                <a href={PERSON.resume} download className="flex items-center gap-2 text-violet-400 py-2">
-                  <Download className="w-4 h-4" /> Download Resume
+              <li className="pt-2 border-t border-white/10">
+                <a href={PERSON.resume} download="Tanvin_Kheni_Full_Stack.pdf"
+                  className="flex items-center gap-2 text-[#a3e635] py-1.5 font-semibold">
+                  <Download className="w-4 h-4" /> Download CV
                 </a>
               </li>
             </ul>

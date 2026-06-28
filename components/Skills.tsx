@@ -4,47 +4,35 @@ import { useRef } from "react";
 import { SKILLS } from "@/data/portfolio";
 import SectionHeading from "./ui/SectionHeading";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  Frontend: "from-violet-500 to-purple-500",
-  Backend: "from-blue-500 to-cyan-500",
-  Databases: "from-emerald-500 to-teal-500",
-  "DevOps & Cloud": "from-orange-500 to-amber-500",
-  "AI & Tooling": "from-pink-500 to-rose-500",
-};
+const ease = [0.22, 1, 0.36, 1];
 
 export default function Skills() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="skills" ref={ref} className="py-24 bg-slate-900/30">
-      <div className="container mx-auto px-6">
-        <SectionHeading title="Tech Stack" subtitle="Technologies I work with" />
-
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="skills" ref={ref} className="py-28 relative overflow-hidden">
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[400px] rounded-full blur-[150px] opacity-20 pointer-events-none"
+        style={{ background:"radial-gradient(ellipse, rgba(60,150,20,0.6), transparent 70%)" }} />
+      <div className="container mx-auto px-6 relative z-10">
+        <SectionHeading title="Tech Stack" subtitle="What I work with" />
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {SKILLS.map((group, i) => (
-            <motion.div
-              key={group.category}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-slate-900/80 border border-slate-700/60 rounded-2xl p-6 hover:border-slate-600 transition-all"
-            >
+            <motion.div key={group.category}
+              data-animate
+              initial={{ opacity:0, y:35 }}
+              animate={inView ? { opacity:1, y:0 } : {}}
+              transition={{ delay:i*0.08, duration:0.5, ease }}
+              whileHover={{ y:-6 }}
+              style={{ willChange:"transform, opacity" }}
+              className="frosted frosted-hover rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-4">
-                <div className={`w-2 h-6 rounded-full bg-gradient-to-b ${CATEGORY_COLORS[group.category] ?? "from-slate-400 to-slate-600"}`} />
-                <h3 className="font-semibold text-white">{group.category}</h3>
+                <span className="w-1.5 h-6 rounded-full bg-[#a3e635]"
+                  style={{ boxShadow:"0 0 8px rgba(163,230,53,0.55)" }} />
+                <h3 className="font-bold text-white text-sm">{group.category}</h3>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((skill, j) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: i * 0.1 + j * 0.04 }}
-                    className="bg-slate-800/80 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white text-sm px-3 py-1.5 rounded-lg transition-all cursor-default"
-                  >
-                    {skill}
-                  </motion.span>
+              <div className="flex flex-wrap gap-1.5">
+                {group.items.map(skill => (
+                  <span key={skill} className="tech-tag cursor-default">{skill}</span>
                 ))}
               </div>
             </motion.div>

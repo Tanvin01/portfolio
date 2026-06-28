@@ -1,224 +1,253 @@
 // ============================================================
-//  ONE FILE TO RULE THEM ALL
-//  Edit this file to update your entire portfolio in ~20 mins
+//  ONE FILE TO CUSTOMISE YOUR ENTIRE PORTFOLIO
 // ============================================================
 
 export const PERSON = {
   name: "Tanvin Kheni",
   role: "Senior Full Stack Engineer",
-  tagline: "8+ Years Building Scalable Products",
-  bio: `I'm a Senior Full Stack Engineer with 8+ years of experience designing and shipping production-grade web applications. I specialise in React, Next.js, Node.js, and cloud-native architectures. I've built everything from real-time chat systems and AI-powered tools to e-commerce platforms processing thousands of daily transactions.
+  tagline: "7+ Years Building Scalable Products",
+  bio: `Versatile Senior Full Stack Engineer with 7+ years of hands-on expertise engineering high-throughput distributed architectures, secure SaaS frameworks, and responsive cloud systems using the MERN ecosystem, TypeScript, and AWS.
 
-Currently at Sky Infoways, I lead frontend architecture and mentor junior developers. I'm passionate about clean code, great developer experience, and products that users love.`,
+Proven track record driving large-scale applications from architectural design to automated production deployments while collaborating with cross-functional development groups. Specialized in API engineering, performance profiling, and building real-time data streaming layers that cut processing latencies and optimize cloud operational spend.`,
   email: "tanvinkhenicse@gmail.com",
+  emailAlt: "tanvinkheni07@gmail.com",
+  phone: "+91 6355403231",
   location: "Surat, India",
-  available: true, // set false to hide "Open to work" badge
-  photo: "/photo.jpg", // place your photo in /public/photo.jpg
-  resume: "/Tanvin_Kheni_Resume.pdf", // place your PDF in /public/
+  available: true,
+  photo: "/tanvin-kheni.png",
+  resume: "/Tanvin_Kheni_Full_Stack.pdf",
   social: {
     github: "https://github.com/Tanvin01",
-    linkedin: "https://www.linkedin.com/in/tanvin-kheni-56559622b",
+    linkedin: "https://linkedin.com/in/tanvin-kheni-56559622b",
     twitter: "",
-    website: "",
   },
 };
 
 export const SKILLS = [
   {
-    category: "Frontend",
-    items: ["React 18", "Next.js 14", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Framer Motion", "GraphQL (Apollo)"],
+    category: "Languages & Environments",
+    items: ["JavaScript (ES6+)", "TypeScript", "Node.js", "Python", "HTML5", "CSS3", "C#"],
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express.js", "Fastify", "REST APIs", "GraphQL", "Socket.io", "Prisma ORM"],
+    category: "Frontend & State",
+    items: ["React.js", "Next.js (SSR/SSG)", "Angular", "Redux Toolkit", "Context API", "Tailwind CSS", "Material UI"],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "MySQL"],
+    category: "Backend Architecture",
+    items: ["Express.js", "NestJS", ".NET Core", "RESTful APIs", "GraphQL", "Microservices", "Event-Driven Systems"],
   },
   {
-    category: "DevOps & Cloud",
-    items: ["Docker", "Kubernetes", "GitHub Actions", "Vercel", "AWS EC2/S3", "Nginx"],
+    category: "Mobile Development",
+    items: ["React Native", "Flutter", "Ionic Framework"],
   },
   {
-    category: "AI & Tooling",
-    items: ["OpenAI API", "GPT-4o", "Stripe", "NextAuth.js", "Zod", "Vitest", "Jest"],
+    category: "Data Architecture",
+    items: ["MongoDB", "MySQL", "PostgreSQL", "SQL Server", "Redis (Caching)"],
+  },
+  {
+    category: "Cloud, DevOps & Infra",
+    items: ["AWS EC2", "AWS S3", "AWS IAM", "CloudWatch", "Docker", "CI/CD", "GitHub Actions", "Nginx"],
+  },
+  {
+    category: "Protocols & Auth",
+    items: ["WebSockets", "Socket.io", "WebRTC", "JWT", "OAuth 2.0", "RBAC"],
+  },
+  {
+    category: "Tooling & Quality",
+    items: ["Git", "GitHub", "Jira", "Postman", "Sentry", "Jest", "Webpack", "Vite"],
   },
 ];
 
 export const EXPERIENCE = [
   {
-    company: "Sky Infoways",
-    role: "Senior Full Stack Engineer",
-    period: "2022 — Present",
+    company: "Sky Infoway",
+    role: "Full Stack Tech Lead",
+    period: "Mar 2025 – Present",
     location: "Surat, India",
     description: [
-      "Lead frontend architecture for 3 SaaS products used by 10,000+ users",
-      "Migrated legacy React app to Next.js 14 App Router — 60% improvement in LCP",
-      "Designed microservice auth system handling 500K+ daily authentication events",
-      "Mentored 4 junior developers; introduced code review culture and CI/CD pipelines",
-      "Integrated OpenAI GPT-4o for AI-assisted features, increasing user engagement by 35%",
+      "Architected scalable decoupled backend services using Node.js, Express, and NestJS, minimizing database lock contention across shared resources",
+      "Designed optimized microservices engine backed by complex MongoDB indexing strategies and MySQL relational configurations",
+      "Developed highly interactive administrative portals utilizing Next.js SSR to ensure fast initial page load times",
+      "Engineered instant visitor alert and notification matrix using WebSockets, reducing payload transit latencies across concurrent sessions",
+      "Containerized individual deployment services with Docker and orchestrated automated infrastructure builds onto AWS clusters",
     ],
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Docker", "AWS"],
+    tech: ["Node.js", "NestJS", "Next.js", "MongoDB", "MySQL", "WebSockets", "Docker", "AWS"],
   },
   {
-    company: "Freelance",
-    role: "Full Stack Developer",
-    period: "2020 — 2022",
-    location: "Remote",
-    description: [
-      "Delivered 12+ projects for clients across India, US, and UK",
-      "Built e-commerce platforms with Stripe integration processing $200K+ in transactions",
-      "Created real-time dashboards for logistics companies with live shipment tracking",
-      "Developed REST and GraphQL APIs consumed by mobile and web clients",
-    ],
-    tech: ["React", "Node.js", "MongoDB", "Express", "Stripe", "GraphQL"],
-  },
-  {
-    company: "TechSoft Solutions",
-    role: "Full Stack Developer",
-    period: "2018 — 2020",
+    company: "Softices",
+    role: "Lead Full Stack Engineer",
+    period: "Mar 2024 – Mar 2025",
     location: "Surat, India",
     description: [
-      "Built internal ERP modules for inventory, HR, and payroll management",
-      "Developed RESTful APIs integrated with third-party logistics and payment services",
-      "Reduced page load times by 45% through code splitting and image optimisation",
-      "Collaborated with design team to implement pixel-perfect, accessible UIs",
+      "Engineered 50+ business modules including payroll, multi-tenant compliance logs, and automated attendance matrixes for 5,000+ active users",
+      "Formulated strict End-to-End TypeScript schemas spanning GraphQL queries and RESTful APIs, preventing runtime breakages",
+      "Introduced unified application telemetry and real-time metrics by deploying Sentry hooks across the platform",
+      "Constructed automated CI/CD pipelines using GitHub Actions — seamless Docker builds on AWS EC2 nodes behind Nginx",
+      "Refactored legacy SQL Server stored procedures, producing a 30% speedup in heavy summary report calculations",
     ],
-    tech: ["React", "Node.js", "MySQL", "Express", "Material UI"],
+    tech: ["TypeScript", "GraphQL", "Sentry", "GitHub Actions", "Docker", "AWS EC2", "SQL Server", "Nginx"],
   },
   {
-    company: "WebCraft Agency",
-    role: "Junior Frontend Developer",
-    period: "2016 — 2018",
+    company: "ProExelancers",
+    role: "Senior Full Stack Developer",
+    period: "Sep 2021 – Mar 2024",
     location: "Surat, India",
     description: [
-      "Built responsive websites for 20+ clients using React and vanilla JS",
-      "Integrated CMS platforms and third-party APIs",
-      "Collaborated in agile team of 8 developers",
+      "Architected distributed event messaging pipelines using Node.js and MongoDB to manage peak traffic for 10,000+ users",
+      "Optimized MySQL query plans and indexes, driving a 35% reduction in compute utilization",
+      "Designed async image pipeline via AWS S3 for automated user compliance document uploads",
+      "Created operational-transform collaborative engine with Socket.io for concurrent state tracking",
+      "Developed cross-platform mobile apps for iOS and Android using React Native and Flutter with JWT auth",
     ],
-    tech: ["React", "JavaScript", "CSS3", "WordPress", "REST APIs"],
+    tech: ["Node.js", "MongoDB", "MySQL", "AWS S3", "Socket.io", "React Native", "Flutter"],
+  },
+  {
+    company: "Tecksky",
+    role: "Full Stack Engineer",
+    period: "Jan 2019 – Sep 2021",
+    location: "Surat, India",
+    description: [
+      "Sports Zone Marketplace: Dynamic scheduling architecture and payment processing with React.js and Node.js",
+      "EduPlay Live Platform: Peer-to-peer real-time video streaming via WebRTC",
+      "EventHub Connect & LoveIn: Spatial maps, chat systems, and fine-tuned MongoDB schemas",
+    ],
+    tech: ["React.js", "Node.js", "MongoDB", "WebRTC", "Express.js"],
+  },
+];
+
+export const EDUCATION = [
+  {
+    degree: "Bachelor of Technology (B.Tech)",
+    institution: "Gujarat Technological University",
+    period: "2018 – 2022",
+    grade: "CGPA: 8.5 / 10.0",
   },
 ];
 
 export const PROJECTS = [
   {
-    title: "DevHire",
-    subtitle: "Full-Stack Job Board Platform",
-    description:
-      "A production-grade job board with role-based authentication for recruiters and job seekers. Features real-time job listings, Kanban application tracker, NextAuth.js OAuth, and email notifications.",
-    image: "/projects/devhire.png",
-    tech: ["Next.js 14", "PostgreSQL", "Prisma", "NextAuth.js", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/Tanvin01/devhire",
-    live: "", // add your Vercel URL when deployed
+    title: "KlearCom",
+    subtitle: "Global CX Testing & IVR Intelligence Platform",
+    description: "KlearCom is a global customer experience testing platform that proactively monitors IVR journeys, call routing, and telecom connectivity across 330+ carriers in 100+ countries. It delivers real-time issue signals — from failed transfers to audio degradation — giving enterprises complete visibility over their customer communication infrastructure before problems reach end users.",
+    images: [
+      "/projects/klearcom/klearcom-1.png",
+      "/projects/klearcom/klearcom-2.png",
+      "/projects/klearcom/klearcom-3.png",
+    ],
+    tech: ["React.js", "Node.js", "WebSockets", "MongoDB", "AWS", "TypeScript"],
+    live: "https://klearcom.com/",
     featured: true,
   },
   {
-    title: "ShopForge",
-    subtitle: "E-Commerce Platform",
-    description:
-      "Full-featured storefront with Stripe Checkout and Webhooks, inventory management, order fulfilment pipeline, admin dashboard, ISR product pages, and a discount code engine.",
-    image: "/projects/shopforge.png",
-    tech: ["Next.js 14", "Stripe", "Prisma", "PostgreSQL", "Zustand", "TypeScript"],
-    github: "https://github.com/Tanvin01/shopforge",
-    live: "",
+    title: "Cowberry",
+    subtitle: "Organic E-Commerce & Multi-Vendor Marketplace",
+    description: "Cowberry is a 100% certified organic products marketplace delivering pure, chemical-free nutrition. Built as a distributed multi-vendor platform with the MERN stack, it handles high-volume API ingestion, Stripe and Razorpay payment routing with transactional isolation, Redis caching for 40% faster responses, and real-time fleet mapping via Socket.io with RBAC-secured access.",
+    images: [
+      "/projects/cowberry/cowberry-1.png",
+      "/projects/cowberry/cowberry-2.png",
+      "/projects/cowberry/cowberry-3.png",
+      "/projects/cowberry/cowberry-4.png",
+    ],
+    tech: ["MERN Stack", "Stripe", "Razorpay", "Redis", "Socket.io", "TypeScript"],
+    live: "https://www.cowberry.com/",
     featured: true,
   },
   {
-    title: "ChatNest",
-    subtitle: "Real-Time Chat Application",
-    description:
-      "Slack-inspired messaging built with Socket.io WebSockets, Redis Pub/Sub for multi-server presence, channels, DMs, typing indicators, file sharing, and emoji reactions.",
-    image: "/projects/chatnest.png",
-    tech: ["React 18", "Socket.io", "Redis", "MongoDB", "Node.js", "TypeScript"],
-    github: "https://github.com/Tanvin01/chatnest",
-    live: "",
+    title: "INOUT",
+    subtitle: "Smart Society & Visitor Management SaaS",
+    description: "INOUT is an all-in-one enterprise B2B SaaS platform that streamlines visitor management, resident check-ins, security access, and real-time notifications for gated communities and residential societies. Architected with decoupled NestJS microservices, Next.js SSR admin portals, WebSocket-driven instant alert systems, and Docker/AWS deployments for high availability.",
+    images: [
+      "/projects/inout/inout-1.png",
+      "/projects/inout/inout-2.png",
+      "/projects/inout/inout-3.png",
+      "/projects/inout/inout-4.png",
+    ],
+    tech: ["Next.js", "NestJS", "MongoDB", "MySQL", "WebSockets", "Docker", "AWS"],
+    live: "https://www.inoutnow.com/",
     featured: true,
   },
   {
-    title: "AI Resume",
-    subtitle: "AI-Powered Resume Builder",
-    description:
-      "GPT-4o streaming tailors bullet points to job descriptions, ATS compatibility scoring, server-side PDF export via Puppeteer, 8 templates, and cover letter generation.",
-    image: "/projects/ai-resume.png",
-    tech: ["Next.js 14", "OpenAI GPT-4o", "Puppeteer", "Supabase", "TypeScript"],
-    github: "https://github.com/Tanvin01/ai-resume",
-    live: "",
+    title: "VRS",
+    subtitle: "Automated Workforce Management SaaS",
+    description: "Visual Registration System (VRS) is an advanced SaaS workforce management platform that unifies employee time tracking, project registration, resource planning, dynamic wage calculation, and holiday management in one seamless system. It integrates directly with ERP, accounting, and payroll systems — giving managers a fully calculated, real-time view of hours and project costs.",
+    images: [
+      "/projects/vrs/vrs-1.png",
+      "/projects/vrs/vrs-2.png",
+      "/projects/vrs/vrs-3.png",
+      "/projects/vrs/vrs-4.png",
+    ],
+    tech: ["React.js", "Node.js", "PostgreSQL", "JWT", "OAuth 2.0", "REST APIs"],
+    live: "https://www.visualregistration.com/",
     featured: true,
   },
   {
-    title: "AuthVault",
-    subtitle: "Authentication Microservice",
-    description:
-      "Drop-in auth service: Argon2id hashing, JWT access/refresh rotation, TOTP-based MFA, Redis rate limiting, RBAC, immutable audit logs, Docker and Kubernetes manifests.",
-    image: "/projects/authvault.png",
-    tech: ["Fastify", "JWT", "Argon2", "Redis", "Docker", "Kubernetes"],
-    github: "https://github.com/Tanvin01/authvault",
-    live: "",
+    title: "Synmax",
+    subtitle: "Maritime Intelligence & Geospatial Analytics",
+    description: "SynMax is a forward-thinking geospatial intelligence company delivering satellite-powered analytics across maritime and energy sectors. Their Theia platform processes 130M+ km² of satellite imagery daily, fusing optical, SAR, and AIS data with AI to track vessels globally — detecting AIS spoofing, dark ships, and sanctions breaches with military-grade precision.",
+    images: [
+      "/projects/synmax/synmax-1.png",
+      "/projects/synmax/synmax-2.png",
+      "/projects/synmax/synmax-3.png",
+    ],
+    tech: ["React.js", "Node.js", "MongoDB", "GraphQL", "AWS S3", "TypeScript"],
+    live: "https://www.synmax.com/",
     featured: false,
   },
   {
-    title: "SpendSense",
-    subtitle: "Personal Finance Tracker",
-    description:
-      "Full-stack finance dashboard with Chart.js doughnut/line charts, category budgets, recurring transactions, month-over-month trends, multi-currency, and CSV export.",
-    image: "/projects/spendsense.png",
-    tech: ["React 18", "Node.js", "MongoDB", "Chart.js", "Zustand", "Express"],
-    github: "https://github.com/Tanvin01/spendsense",
-    live: "",
+    title: "VTS",
+    subtitle: "Visual Tracking for Smart Manufacturing (Norway)",
+    description: "Visual Tracking System (VTS) is a Norwegian manufacturing intelligence platform that provides full traceability from customer purchase orders through production operations. Integrated with Microsoft Dynamics 365 Business Central, it gives factories clear visibility over production orders, work centers, NCRs, and on-time delivery metrics — enabling smarter, data-driven manufacturing.",
+    images: [
+      "/projects/vts/vts-1.png",
+      "/projects/vts/vts-2.png",
+    ],
+    tech: ["React.js", "Node.js", "WebSockets", "PostgreSQL", "MS Dynamics 365", "TypeScript"],
+    live: "https://www.visualtracking.no/",
     featured: false,
   },
   {
-    title: "LogiTrack",
-    subtitle: "Inventory & Logistics Dashboard",
-    description:
-      "Warehouse management with real-time stock levels, low-stock alerts, multi-carrier shipment tracking, supplier purchase orders, Redux Toolkit RTK Query, and Excel export.",
-    image: "/projects/logitrack.png",
-    tech: ["React", "Redux Toolkit", "Node.js", "MongoDB", "Recharts", "TypeScript"],
-    github: "https://github.com/Tanvin01/logitrack",
-    live: "",
+    title: "Parivar",
+    subtitle: "Family & Community Networking App",
+    description: "Parivar is a private family and community networking platform that connects friends, loved ones, and like-minded communities in one secure digital space. Members can share moments, manage family directories, preserve memories, and stay updated — all with full privacy control. Built cross-platform with React Native and backed by a scalable Node.js and MongoDB architecture.",
+    images: [
+      "/projects/parivar/parivar-1.png",
+      "/projects/parivar/parivar-2.png",
+    ],
+    tech: ["React Native", "Node.js", "MongoDB", "Socket.io", "AWS S3", "JWT"],
+    live: "https://parivar.app/",
     featured: false,
   },
   {
-    title: "MediBook",
-    subtitle: "Healthcare Appointment Platform",
-    description:
-      "Doctor discovery with smart availability calendar, video consultations via Daily.co, patient health portal, Supabase Row-Level Security, and SMS/email reminders.",
-    image: "/projects/medibook.png",
-    tech: ["Next.js 14", "Supabase", "TypeScript", "Tailwind CSS", "Daily.co"],
-    github: "https://github.com/Tanvin01/medibook",
-    live: "",
-    featured: false,
-  },
-  {
-    title: "CodeCollab",
-    subtitle: "Code Review Platform",
-    description:
-      "GitHub-integrated code review tool with GraphQL API, inline comments, diff viewer, review decision workflow, and real-time updates via GraphQL subscriptions.",
-    image: "/projects/codecollab.png",
-    tech: ["React", "GraphQL", "Apollo Server 4", "PostgreSQL", "Docker", "TypeScript"],
-    github: "https://github.com/Tanvin01/codecollab",
-    live: "",
+    title: "MatchUp India",
+    subtitle: "Smart Dating & Matchmaking Platform",
+    description: "Match Up India is a modern dating and social matchmaking platform that creates a safe, verified digital space for individuals to find meaningful connections based on shared interests, values, and vibes. Features include verified profiles, smart matchmaking algorithms, real-time chat, and a secure environment — all built on a scalable full-stack architecture.",
+    images: [
+      "/projects/matchupindia/matchupindia-1.png",
+      "/projects/matchupindia/matchupindia-2.png",
+    ],
+    tech: ["React.js", "Node.js", "MongoDB", "Express.js", "Socket.io", "JWT"],
+    live: "https://www.matchupindia.com/",
     featured: false,
   },
 ];
 
 export const STATS = [
-  { value: "8+", label: "Years Experience" },
+  { value: "7+", label: "Years Experience" },
   { value: "50+", label: "Projects Delivered" },
-  { value: "15+", label: "Happy Clients" },
-  { value: "9", label: "Open Source Repos" },
+  { value: "8", label: "Live Products" },
+  { value: "10K+", label: "Users Served" },
 ];
 
 export const SEO = {
   title: "Tanvin Kheni — Senior Full Stack Engineer",
   description:
-    "Senior Full Stack Engineer with 8+ years building scalable SaaS, real-time apps, and AI-powered products using Next.js, React, Node.js, PostgreSQL, and MongoDB.",
+    "Senior Full Stack Engineer with 7+ years building scalable SaaS, real-time systems, and cloud-native architectures using MERN stack, TypeScript, Next.js, Node.js, and AWS.",
   url: "https://tanvinkheni.vercel.app",
-  twitterHandle: "@TanvinKheni",
+  twitterHandle: "",
   keywords: [
-    "Tanvin Kheni","Full Stack Developer","Senior Full Stack Engineer","Next.js Developer",
-    "React Developer","Node.js Developer","TypeScript","Surat India Developer",
-    "Full Stack Engineer India","Remote Full Stack Developer","Portfolio",
+    "Tanvin Kheni", "Full Stack Developer", "Senior Full Stack Engineer",
+    "Next.js Developer", "React Developer", "Node.js Developer",
+    "TypeScript", "MERN Stack", "Surat India Developer",
+    "Full Stack Engineer India", "Remote Full Stack Developer", "Portfolio",
   ],
 };

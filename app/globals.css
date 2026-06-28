@@ -5,55 +5,140 @@
 @layer base {
   :root { --font-inter: 'Inter', sans-serif; }
   html { scroll-behavior: smooth; }
-  ::selection { background: rgba(99,102,241,0.3); color: #fff; }
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #0f172a; }
-  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+  body { background: #0b1a0b; color: #fff; }
+  ::selection { background: rgba(163,230,53,0.3); color: #fff; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0b1a0b; }
+  ::-webkit-scrollbar-thumb { background: rgba(163,230,53,0.5); border-radius: 99px; }
 }
 
 @layer utilities {
+  /* ── THE glass card — exactly like screenshot ──
+     Dark semi-transparent, slight whitish tint, thin light border */
+  .frosted {
+    background: rgba(20, 35, 18, 0.72);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .frosted-hover {
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .frosted-hover:hover {
+    background: rgba(30, 48, 25, 0.8);
+    border-color: rgba(163, 230, 53, 0.3);
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 0 28px rgba(163, 230, 53, 0.07);
+  }
+
+  /* ── Frosted green accent ── */
+  .frosted-green {
+    background: rgba(163, 230, 53, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(163, 230, 53, 0.22);
+  }
+
+  /* ── Gradient text ── */
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400;
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #a3e635 0%, #84cc16 60%, #d9f99d 100%);
   }
-  .gradient-border {
-    position: relative;
-  }
+
+  /* ── Gradient border ── */
+  .gradient-border { position: relative; }
   .gradient-border::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(139,92,246,0.5), rgba(59,130,246,0.5), rgba(6,182,212,0.5));
+    padding: 1.5px;
+    background: linear-gradient(135deg, rgba(163,230,53,0.7), rgba(255,255,255,0.2), rgba(163,230,53,0.3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    -webkit-mask-composite: xor; mask-composite: exclude;
     pointer-events: none;
   }
-  .glow-sm { box-shadow: 0 0 20px rgba(99,102,241,0.15); }
-  .glow-md { box-shadow: 0 0 40px rgba(99,102,241,0.2); }
-  .noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+
+  /* ── Buttons ── */
+  .btn-primary {
+    background: #a3e635; color: #0b1a0b; font-weight: 700;
+    box-shadow: 0 0 18px rgba(163,230,53,0.3), 0 4px 12px rgba(0,0,0,0.2);
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover {
+    background: #bef264;
+    box-shadow: 0 0 30px rgba(163,230,53,0.5), 0 4px 16px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+  }
+  .btn-glass {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff; font-weight: 600;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+  .btn-glass:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(163,230,53,0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ── Tech tags ── */
+  .tech-tag {
+    background: rgba(163,230,53,0.09);
+    border: 1px solid rgba(163,230,53,0.2);
+    color: rgba(163,230,53,0.92);
+    font-size: 0.7rem; padding: 2px 10px;
+    border-radius: 99px; font-weight: 500;
+    backdrop-filter: blur(4px);
   }
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
+/* ── Rich dark-green background — like the leaf photo in screenshot ── */
+body {
+  background:
+    radial-gradient(ellipse 100% 80% at 15% 10%, rgba(20, 80, 15, 0.85) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 85% 85%, rgba(10, 60, 20, 0.8) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(15, 50, 10, 0.5) 0%, transparent 65%),
+    #060e06;
+  min-height: 100vh;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ── Subtle grid ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
+/* ── Float — GPU-only (transform + opacity only) ── */
+.animate-float { animation: float 7s ease-in-out infinite; }
+.animate-float-delayed { animation: float 7s ease-in-out infinite 3.5s; }
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
 }
+
+/* ── Neon ring — GPU only ── */
+.neon-ring { animation: neonPulse 3.5s ease-in-out infinite; }
+@keyframes neonPulse {
+  0%,100% { box-shadow: 0 0 8px rgba(163,230,53,0.25), 0 0 24px rgba(163,230,53,0.08); }
+  50%      { box-shadow: 0 0 20px rgba(163,230,53,0.5), 0 0 50px rgba(163,230,53,0.18); }
+}
+
+/* ── Timeline ── */
+.timeline-line {
+  background: linear-gradient(to bottom, rgba(163,230,53,0.6), rgba(163,230,53,0.1), transparent);
+}
+
+/* ── will-change for animated elements ── */
+[data-animate] { will-change: transform, opacity; }
