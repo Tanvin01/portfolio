@@ -18,7 +18,7 @@ Proven track record driving large-scale applications from architectural design t
   resume: "/Tanvin_Kheni_Full_Stack.pdf",
   social: {
     github: "https://github.com/Tanvin01",
-    linkedin: "https://linkedin.com/in/tanvin-kheni-56559622b",
+    linkedin: "https://www.linkedin.com/in/tanvin-k-346461227/",
     twitter: "",
   },
 };
